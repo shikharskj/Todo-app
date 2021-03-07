@@ -1,0 +1,230 @@
+/* variables */
+:root{
+    --hover-color:#EAEDF0;
+    --outer-color:#E7E7E7;
+    --calender-indicator: none;
+}
+
+/* flex row */
+.flex{
+    display: flex;
+}
+
+/* flex column */
+.flex-direction-column{
+    flex-direction: column;
+}
+
+/* center align along the main axis */
+.justify-center{
+    justify-content: center;
+}
+
+/* center align along the perpendicular axis  */
+.align-center{
+    align-items: center;
+}
+
+/* BODY AND INNER CONTAINER */
+body{
+    font-family: sans-serif;
+    color: black;
+    background-color: #7a7e91;
+}
+
+#container{
+    width: 50%;
+    align-items: center;
+    background-color: white;
+}
+
+/* HEADING */
+#heading{
+    margin: 5% 0;
+    font-size: 50px;
+}
+
+/* DARK MODE */
+
+#dark-mode-toggle{
+    position: absolute;
+    top: 25px;
+    right: 26%;
+}
+
+#outer{
+    width: 50px;
+    height: 15px;
+    background-color: var(--outer-color);
+    border-radius:1.5rem;
+    
+}
+
+#inner{
+    width: 21px;
+    height: 21px;
+    background-color:#909090;
+    border-radius:50%;
+    position: relative;
+    top: -3px;
+}
+
+/* Classes that will be added during DARK MODE */
+.dark{
+    background-color:black !important; 
+    color:white;
+}
+
+.margin{
+    margin-left: 30px;
+}
+
+
+/* FORM */
+form{
+    width: 100%;
+}
+
+form input,select{
+    width: 90%;
+    border: none;
+    outline: none;
+    text-shadow: none;
+}
+
+.input-heading{
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* different input containers */
+#description-container,#category-container,#date-container,#time-container{
+    border-top: 1px solid gray;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 12px;
+}
+
+#category-container{
+    border-right: 1px solid gray;
+}
+
+#category-container,#date-container{
+    width: 50%;
+    border-bottom: 1px solid gray;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: var(--calender-indicator);
+}
+
+#time-container{
+    border-top: none;
+    border-bottom: 1px solid gray;
+}
+
+/* ADD TASK AND DELETE TASK */
+button,a{
+    border: none;
+    margin: 20px 5px;
+    width: 150px;
+    text-align: left;
+    padding: 15px 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#add-task{
+    background-color: #464646 ;
+}
+
+#del-task{
+    background-color: #ED3823;
+    text-decoration: none;
+}
+
+#add-task i,#del-task i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+/* TASK LIST */
+#task-list{
+    width: 90%;
+}
+
+#task-list>div{
+    padding: 10px 0;
+}
+
+#task-list>div:hover,.crossedout{
+    background-color: var(--hover-color);
+}
+
+input[type="checkbox"]{
+    cursor: pointer;
+}
+
+.description-date-container{
+    flex:1;
+    margin-left: 10px;
+}
+
+.description{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.task-date{
+    width:33%;
+}
+
+.task-time{
+    font-size: 11px;
+    color: gray;
+}
+
+.task-type{
+    color: white;
+    width: 100px;
+    padding: 15px 0;
+    text-align: center;
+    margin-right: 10px;
+}
+
+/* not displaying task ids */
+.task-ids{
+    display: none;
+}
+
+hr{
+    margin:0;
+}
+
+/* MEDIA QUERIES FOR RESPONSIVE UI */
+
+@media only screen and (max-width:1200px){
+    .task-date {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width:1100px){
+    #container {
+        width: 70%;
+    }
+    #dark-mode-toggle {
+        right: 17%;
+    }
+}
+
+@media only screen and (max-width:800px){
+    #container {
+        width: 100%;
+    }
+    #dark-mode-toggle {
+        right: 3%;
+    }
+}

@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <script src="https://kit.fontawesome.com/a1d1eb4f65.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body class="flex justify-center">
+        <div id="container" class="flex flex-direction-column">
+            <!-- Heading -->
+            <div id="heading">
+                <i class="fas fa-tasks"></i> <%= heading %>
+            </div>
+            <!-- Dark mode toggle switch -->
+            <div id="dark-mode-toggle">
+                <div id="outer">
+                    <div id="inner">     
+                    </div>
+                </div>
+            </div>
+            <!-- FORM -->
+            <form class="flex flex-direction-column" action="/create-task" method="post">
+                <!-- input description -->
+                <div id="description-container">
+                    <div class="input-heading"><%= inputHeading1 %></div>
+                    <input type="text" name="description" placeholder="What do you need to do?" required>
+                </div>
+                <div class="flex">
+                    <!-- input task type -->
+                    <div id="category-container">
+                        <div class="input-heading"><%= inputHeading4 %></div>
+                        <select id="category_select" name="task_type" required>
+                            <option value="">Choose a category</option>
+                            <option value="<%=selectPERSONAL %>"><%=selectPERSONAL %></option>
+                            <option value="<%=selectWORK %>"><%=selectWORK %></option>
+                            <option value="<%=selectSCHOOL %>"><%=selectSCHOOL %></option>
+                            <option value="<%=selectCLEANING %>"><%=selectCLEANING %></option>
+                            <option value="<%=selectOTHER %>"><%=selectOTHER %></option>
+                        </select>
+                    </div>
+                    <!-- input date -->
+                    <div id="date-container">
+                        <div class="input-heading"><%= inputHeading3 %></div>
+                        <input type="date" name="on_date" required ><br>
+                    </div>
+                </div>
+                <!-- input time -->
+                <div id="time-container">
+                    <div class="input-heading"><%= inputHeading4 %></div>
+                    <select id="time_select" name="at_time" required>
+                        <option value="">Choose at what time</option>
+                        <option value="<%=selectMORNING%>"><%=selectMORNING%></option>
+                        <option value="<%=selectAFTERNOON%>"><%=selectAFTERNOON%></option>
+                        <option value="<%=selectEVENING%>"><%=selectEVENING%></option>
+                        <option value="<%=selectNIGHT%>"><%=selectNIGHT%></option>
+                    </select>
+                </div>
+                <!-- Add and Delete buttons -->
+                <div class="flex justify-center">
+                    <button id="add-task" type="submit"><i class="fas fa-plus"></i><%= add %></button>
+                    <a id="del-task" href=""><i class="far fa-trash-alt"></i><%= del %></a>
+                </div>
+            </form>
+            <!-- Displaying the list of tasks -->
+            <div id="task-list">
+                <% for(let i of tasks_list){ %>
+                    <div class="flex align-center">
+                        <div><input type="checkbox" class="checkboxes"></div>
+                        <div class="description-date-container">
+                            <div class="description"><%= i.description %></div>
+                            <div class="flex">
+                                <div class="task-date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <% d= new Date(i.on_date) %>
+                                    <span><%= month[d.getMonth()] %> <%= d.getDate() %>, <%= d.getFullYear() %></span>
+                                </div>
+                                <span class="task-time"> <i class="far fa-clock"></i> <%= i.at_time %></span>
+                            </div>
+                        </div>
+                        <div class="task-type"><%= i.task_type %></div>
+                        <!-- showing but not displaying task id so that they can be accessed by js -->
+                        <span class="task-ids"><%= i._id%></span>
+                    </div>
+                    <hr>
+                <%} %>
+            </div>
+        </div>
+        <!-- javascript added -->
+        <script src="/js/home.js"></script>
+    </body>
+</html>
